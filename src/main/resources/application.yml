@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+    properties:
+      hibernate:
+
+#        show_sql: false =>얘는 시스템아웃을 통해 출력되는 거니까 운영환경에서 쓰지 말고 밑에처럼 로깅..디버그모드로 찍히게 하자!!
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug #하이버네이트가 생성하는 SQL이 전부 디버그 모드로 보임, 위의 show sql은 시스템아웃을 통해 출력, 얘는 로그를 통해 찍음
