@@ -18,3 +18,4 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug #하이버네이트가 생성하는 SQL이 전부 디버그 모드로 보임, 위의 show sql은 시스템아웃을 통해 출력, 얘는 로그를 통해 찍음
+    org.hibernate.type: trace #파라미터가 ?, ?에서 끝나는 게 아니라 그 밑에 trace로해서 binding parameter 로 파라미터가 뭐인지 찍어줌
