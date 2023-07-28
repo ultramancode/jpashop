@@ -4,6 +4,7 @@ package com.example.jpashop.domain;
 import com.example.jpashop.domain.item.Item;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,17 +23,25 @@ public class OrderItem {
   @Column(name = "order_item_id")
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "item_id")//매핑을 뭘로 할 것인가~! + 외래키의 이름을 item_id 로 한다~
   private Item item;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "order_id") //매핑을 뭘로 할 것인가~! + 외래키의 이름을 order_id 로 한다~
   private Order order;
 
   private int orderPrice; // 주문 당시 가격
   private int count; // 주문 당시 수량
 
+  /**
+   * 연관관계 편의 메소드
+   */
+
+  public void addOrder(Order order){
+    this.order = order;
+    order.getOrderItems().add(this);
+  }
 
 
 }

@@ -33,7 +33,7 @@ public abstract class Item {
   private String name;
   private int price;
   private int stockQuantity;
-  @ManyToMany //학습용으로 설정한 다대다 관계(원래는 하면 안됨.. 중간테이블 조정 못하니)
+  @ManyToMany(mappedBy = "items") //학습용으로 설정한 다대다 관계(원래는 하면 안됨.. 중간테이블 조정 못하니). 중간테이블은 카테고리 클래스에 입력!
   private List<Category> categories = new ArrayList<>();
 
 
