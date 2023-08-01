@@ -17,13 +17,16 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter // 학습용으로 열어둔 세터..!
 @Table(name = "orders") //order 디비 예약어니까
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
   @Id

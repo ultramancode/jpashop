@@ -14,7 +14,9 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -24,6 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter //학습을 위해 열어둔 Setter
 //아이템 자체 객체 만들 일 없고 얠 상속 받는 애들만 있으니 추상화클래스로~
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class Item {
 
   @Id

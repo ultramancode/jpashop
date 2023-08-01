@@ -10,12 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter //학습용으로 열어둔 세터..!
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
   @Id

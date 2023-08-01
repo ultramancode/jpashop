@@ -9,12 +9,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter // 학습용으로 열어둔 setter..!!
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
   @Id
