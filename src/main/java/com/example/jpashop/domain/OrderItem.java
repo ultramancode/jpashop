@@ -35,13 +35,27 @@ public class OrderItem {
   private int count; // 주문 당시 수량
 
   /**
-   * 연관관계 편의 메소드
+   * 생성 메소드
+   * item에 있는 orderPrice 안쓰고 따로 받는 이유는 할인 등으로 값이 바뀔 수도 있으니 따로..
    */
 
-  public void addOrder(Order order){
-    this.order = order;
-    order.getOrderItems().add(this);
+  public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+    OrderItem orderItem = new OrderItem();
+    orderItem.setItem(item);
+    orderItem.setOrderPrice(orderPrice);
+    orderItem.setCount(count);
+
+    item.removeStock(count);
+    return orderItem;
+
   }
 
+//==비즈니스 로직==//
+  public void cancel() {
+    getItem().addStock(count);
+  }
 
+  public int getTotalPrice() {
+    return getOrderPrice() * getCount();
+  }
 }
