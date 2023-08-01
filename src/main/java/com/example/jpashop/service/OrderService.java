@@ -7,7 +7,6 @@ import com.example.jpashop.domain.OrderItem;
 import com.example.jpashop.domain.item.Item;
 import com.example.jpashop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +27,7 @@ public class OrderService {
    * @return orderId
    */
   @Transactional
-  public Long Order(Long memberId, Long itemId, int count){
+  public Long createOrder(Long memberId, Long itemId, int count){
     //엔티티 조회
     Member member = memberService.findOne(memberId);
     Item item = itemService.findOne(itemId);

@@ -1,11 +1,14 @@
 package com.example.jpashop.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.jpashop.domain.Member;
 import com.example.jpashop.repository.MemberRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +26,7 @@ class MemberServiceTest {
   @Autowired
   EntityManager em;
   @Test
+  @DisplayName("회원가입")
 //  @Rollback(value = false)
   public void 회원가입() {
     //given
@@ -35,9 +39,10 @@ class MemberServiceTest {
 
     //만약 아이디 생성 전략 sequence로 했을 때 인서트 쿼리 보고 싶으면 이렇게 flush 따로 해주면 됨
 //    em.flush();
-    Assertions.assertEquals(member, memberRepository.findOne(savedId));
-    }
+    assertThat(member).isEqualTo(memberRepository.findOne(savedId));
+  }
   @Test
+  @DisplayName("중복회원예외")
   public void 중복_회원_예외() {
     //given
     Member member1 = Member.builder().name("ktw").build();
