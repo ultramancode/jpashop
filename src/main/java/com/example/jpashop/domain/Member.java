@@ -10,6 +10,7 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,5 +37,12 @@ public class Member {
   // order의 멤버가 연관관계 주인이다!
   @OneToMany(mappedBy = "member")
   private List<Order> orders = new ArrayList<>();
-
+  //테스트 코드용
+  @Builder
+  public Member(Long id, String name, Address address, List<Order> orders) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+    this.orders = orders;
+  }
 }

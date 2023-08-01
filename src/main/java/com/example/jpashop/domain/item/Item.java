@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -50,6 +51,14 @@ public abstract class Item {
   public void addStock(int quantity) {
     this.stockQuantity += quantity;
   }
+
+  //테스트 코드용
+  public Item(String name, int price, int stockQuantity) {
+    this.name = name;
+    this.price = price;
+    this.stockQuantity = stockQuantity;
+  }
+
   /**
    * stock 감소
    */
