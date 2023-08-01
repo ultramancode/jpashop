@@ -13,7 +13,7 @@ public class OrderRepository {
     em.persist(order);
   }
 
-  private Order findOne(Long id) {
+  public Order findOne(Long id) {
     return em.find(Order.class, id);
   }
 }
