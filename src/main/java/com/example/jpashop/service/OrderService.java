@@ -1,11 +1,14 @@
 package com.example.jpashop.service;
 
 import com.example.jpashop.domain.Delivery;
+import com.example.jpashop.domain.DeliveryStatus;
 import com.example.jpashop.domain.Member;
 import com.example.jpashop.domain.Order;
 import com.example.jpashop.domain.OrderItem;
+import com.example.jpashop.domain.OrderSearch;
 import com.example.jpashop.domain.item.Item;
 import com.example.jpashop.repository.OrderRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +39,7 @@ public class OrderService {
 
     Delivery delivery = new Delivery();
     delivery.setAddress(member.getAddress());
+    delivery.setStatus(DeliveryStatus.READY);
 
     //주문상품 생성
     OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
@@ -65,6 +69,9 @@ public class OrderService {
 
   //검색
 
+  public List<Order> searchOrder(OrderSearch orderSearch){
+    return orderRepository.findAllByCriteria(orderSearch);
+  }
 
 
 }
