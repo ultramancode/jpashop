@@ -38,7 +38,7 @@ public class MemberController {
     Address address = new Address(memberForm.getCity(), memberForm.getStreet(),
         memberForm.getZipcode());
 
-    Member member = Member.builder()
+    Member member = new Member.Builder()
         .name(memberForm.getName())
         .address(address)
         .build();

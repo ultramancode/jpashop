@@ -41,8 +41,40 @@ public class Member {
   @OneToMany(mappedBy = "member")
   @JsonIgnore
   private List<Order> orders = new ArrayList<>();
-  //테스트 코드용
-  @Builder
+
+
+  //@Builder로 하려니까 orders가 초기화 안되서 아예 빌더패턴 새로 만듦
+  //@Builder는 생성자에 대해서만 작동하지. 초기화는 신경 안씀
+//  @Builder
+  public static class Builder {
+    private Long id;
+
+    private String name;
+
+    private Address address;
+    private List<Order> orders = new ArrayList<>();
+
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder address(Address address) {
+      this.address = address;
+      return this;
+    }
+
+    public Builder orders(List<Order> orders) {
+      this.orders = orders;
+      return this;
+    }
+
+    public Member build() {
+      return new Member(id, name, address, orders);
+    }
+
+  }
+
   public Member(Long id, String name, Address address, List<Order> orders) {
     this.id = id;
     this.name = name;

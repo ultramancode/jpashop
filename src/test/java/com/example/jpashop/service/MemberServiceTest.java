@@ -30,8 +30,7 @@ class MemberServiceTest {
 //  @Rollback(value = false)
   public void 회원가입() {
     //given
-    Member member = Member.builder().name("ktw").build();
-
+    Member member = new Member.Builder().name("ktw").build();
     //when
     Long savedId = memberService.join(member);
 
@@ -45,8 +44,8 @@ class MemberServiceTest {
   @DisplayName("중복회원예외")
   public void 중복_회원_예외() {
     //given
-    Member member1 = Member.builder().name("ktw").build();
-    Member member2 = Member.builder().name("ktw").build();
+    Member member1 = new Member.Builder().name("ktw").build();
+    Member member2 = new Member.Builder().name("ktw").build();
 
 //    Member member1 = new Member();
 //    member1.setName("ktw");

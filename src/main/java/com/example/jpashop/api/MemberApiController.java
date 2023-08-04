@@ -33,7 +33,7 @@ public class MemberApiController {
   //@RequestBody : json으로 온 body 데이터를 member로 매핑
   public CreateMemberResponse saveMemberV2(@RequestBody @Valid CreateMemberRequest request){
 
-    Member member = Member.builder().name(request.getName()).build();
+    Member member = new Member.Builder().name(request.getName()).build();
     Long id = memberService.join(member);
     return new CreateMemberResponse(id);
   }
@@ -73,7 +73,7 @@ public Result memberV2() {
   //Result로 한번 감싸주기
   //오브젝트 타입 반환.. 데이터필드 값은 리스트로
   //안감싸주면 바로 리스트 배열타입으로 가고 유연성이 떨어진다.
-  //리스트로 바로 반환하면 실무에서는 유연성이 떨어져서 안됨
+  //리스트로 바로 반환하면 실무에서는 유연성이 떨어져서 안됨. 요구사항 계속 추가,변경 될테니
   //이렇게 한번 감싸면 추가로 .size()도 넣어준다든가 하는 식으로 유연성있게 가능!
   return new Result(collect.size(), collect);
 

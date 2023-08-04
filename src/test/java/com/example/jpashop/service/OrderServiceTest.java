@@ -105,11 +105,12 @@ class OrderServiceTest {
   }
 
   private Member createMember(String name, Address address) {
-    Member member = Member.builder()
+    Member member = new Member.Builder()
         .name(name)
         .address(address)
         //빌더패턴쓰면 필드초기화 안돼서 수동으로 초기화..
         //@Builder를 사용하면 해당 필드는 초기화되지 않는다. + 참고로 @noargs에서 force로 강제 기본생성자 생성할 때도 null이 들어가버림
+        //@Builder가 아닌 직접 빌더패턴 만들 때 초기화 시켜버렸음 지금은!
         .orders(new ArrayList<>())
         .build();
 
