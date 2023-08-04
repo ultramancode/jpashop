@@ -1,5 +1,6 @@
 package com.example.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,6 +48,7 @@ public class Order {
 
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "delivery_id")
+  @JsonIgnore //학습용
   private Delivery delivery;
 
   private LocalDateTime orderDate; //주문시간

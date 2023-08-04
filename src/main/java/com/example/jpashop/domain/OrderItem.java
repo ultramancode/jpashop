@@ -2,6 +2,7 @@ package com.example.jpashop.domain;
 
 
 import com.example.jpashop.domain.item.Item;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,6 +33,8 @@ public class OrderItem {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "order_id") //매핑을 뭘로 할 것인가~! + 외래키의 이름을 order_id 로 한다~
+  @JsonIgnore //학습용
+
   private Order order;
 
   private int orderPrice; // 주문 당시 가격

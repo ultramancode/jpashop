@@ -30,7 +30,8 @@ dependencies {
 
 	//검증 추가
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	compileOnly 'org.projectlombok:lombok'
+	//학습용! 실제로 엔티티 외부 노출 하지 않을테니 쓸 일 없을듯..?
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5-jakarta'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
