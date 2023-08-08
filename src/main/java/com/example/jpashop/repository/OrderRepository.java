@@ -31,7 +31,6 @@ public class OrderRepository {
   }
 
 
-
   public List<Order> findAllByString(OrderSearch orderSearch) {
 
     String jpql = "select o from Order o join o.member m";
@@ -74,9 +73,7 @@ public class OrderRepository {
 
 
   /**
-   * JPA Criteria
-   * 그냥 criteria 맛보기! 실무에선 사용 X,
-   * 실무에서는 QueryDSL 동적 쿼리! Boolean expression 쓰겠지 당연히!!
+   * JPA Criteria 그냥 criteria 맛보기! 실무에선 사용 X, 실무에서는 QueryDSL 동적 쿼리! Boolean expression 쓰겠지 당연히!!
    */
   public List<Order> findAllByCriteria(OrderSearch orderSearch) {
     CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -103,5 +100,27 @@ public class OrderRepository {
     return query.getResultList();
   }
 
+  public List<Order> findAllWithMemberDelivery() {
+    return em.createQuery(
+        "select o from Order o" +
+            " join fetch o.member m" +
+            " join fetch o.delivery d", Order.class
+    ).getResultList();
+  }
+
+  /**
+   * OrderQueryRepository로 이전! 논리적 계층 구조 분리 위해(지금은 이 메소드 때문에 레포가 화면에 의존하는 느낌)
+   */
+//  public List<OrderSimpleQueryDto> findOrderDtos() {
+//    //jpa는 엔티티나 밸류오브젝트(임베더블 같은..)만 반환 가능, dto에 바로 매핑 안됨, address는 값타입이라 가능
+//    //따라서 new 오퍼레이션 써줘야함 (지저분해진다는 단점 존재)
+//    return em.createQuery(
+//            "select new com.example.jpashop.repository.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status, d.address)" +
+//                " from Order o" +
+//                " join o.member m" +
+//                " join o.delivery d", OrderSimpleQueryDto.class)
+//        .getResultList();
+//  }
 }
+
 
