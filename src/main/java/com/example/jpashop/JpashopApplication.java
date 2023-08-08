@@ -16,11 +16,12 @@ public class JpashopApplication {
 
   //학습용.. 실제로는 엔티티 외부 노출할 일 없으니 안쓸듯
   //부트 3.0 이상은 Jakarta붙힌 걸로!
+  //lazy로딩 호출해서 정상적으로 프록시 초기화된 애들만 데이터로 반환
   @Bean
   Hibernate5JakartaModule hibernate5Module() {
     Hibernate5JakartaModule hibernate5JakartaModule = new Hibernate5JakartaModule();
     //강제 지연 로딩 설정(학습용이니 써보는거지 실제로는 쓰면 안됨. lazy 로딩 애들 전부 다 긁어와서 성능 저하됨)
-    hibernate5JakartaModule.configure(Feature.FORCE_LAZY_LOADING, true);
+//    hibernate5JakartaModule.configure(Feature.FORCE_LAZY_LOADING, true);
     return hibernate5JakartaModule;
   }
 }

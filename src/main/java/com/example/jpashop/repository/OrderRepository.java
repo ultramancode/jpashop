@@ -108,9 +108,22 @@ public class OrderRepository {
     ).getResultList();
   }
 
-  /**
-   * OrderQueryRepository로 이전! 논리적 계층 구조 분리 위해(지금은 이 메소드 때문에 레포가 화면에 의존하는 느낌)
-   */
+  public List<Order> findAllByWithItem() {
+    return em.createQuery(
+            "select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d" +
+                " join fetch o.orderItems oi" +
+                " join fetch oi.item i", Order.class)
+        .getResultList();
+  }
+
+
+}
+
+/**
+ * OrderQueryRepository로 이전! 논리적 계층 구조 분리 위해(지금은 이 메소드 때문에 레포가 화면에 의존하는 느낌)
+ */
 //  public List<OrderSimpleQueryDto> findOrderDtos() {
 //    //jpa는 엔티티나 밸류오브젝트(임베더블 같은..)만 반환 가능, dto에 바로 매핑 안됨, address는 값타입이라 가능
 //    //따라서 new 오퍼레이션 써줘야함 (지저분해진다는 단점 존재)
@@ -121,6 +134,6 @@ public class OrderRepository {
 //                " join o.delivery d", OrderSimpleQueryDto.class)
 //        .getResultList();
 //  }
-}
+
 
 
