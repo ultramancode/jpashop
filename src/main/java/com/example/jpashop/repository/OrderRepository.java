@@ -100,6 +100,8 @@ public class OrderRepository {
     return query.getResultList();
   }
 
+  //페이징에 영향 주지 않는 toOne관계 애들 페치조인
+  //이제 문제는 orderItems. N번쿼리+item만큼 M번 쿼리 날려버림 -> 배치사이즈 필요
   public List<Order> findAllWithMemberDelivery() {
     return em.createQuery(
         "select o from Order o" +
@@ -107,6 +109,16 @@ public class OrderRepository {
             " join fetch o.delivery d", Order.class
     ).getResultList();
   }
+  public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+    return em.createQuery(
+        "select o from Order o" +
+            " join fetch o.member m" +
+            " join fetch o.delivery d", Order.class
+    ).setFirstResult(offset)
+        .setMaxResults(limit)
+        .getResultList();
+  }
+
 
   public List<Order> findAllByWithItem() {
     return em.createQuery(
@@ -117,9 +129,9 @@ public class OrderRepository {
                 " join fetch oi.item i", Order.class)
         .getResultList();
   }
-
-
 }
+
+
 
 /**
  * OrderQueryRepository로 이전! 논리적 계층 구조 분리 위해(지금은 이 메소드 때문에 레포가 화면에 의존하는 느낌)

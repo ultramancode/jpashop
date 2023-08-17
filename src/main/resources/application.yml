@@ -14,8 +14,24 @@ spring:
 
 #        show_sql: false =>얘는 시스템아웃을 통해 출력되는 거니까 운영환경에서 쓰지 말고 밑에처럼 로깅..디버그모드로 찍히게 하자!!
         format_sql: true
+        default_batch_fetch_size: 100
 
 logging:
   level:
     org.hibernate.SQL: debug #하이버네이트가 생성하는 SQL이 전부 디버그 모드로 보임, 위의 show sql은 시스템아웃을 통해 출력, 얘는 로그를 통해 찍음
     org.hibernate.type: trace #파라미터가 ?, ?에서 끝나는 게 아니라 그 밑에 trace로해서 binding parameter 로 파라미터가 뭐인지 찍어줌
+
+springdoc:
+  packages-to-scan: com.example.jpashop
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: demo-ui.html            # Swagger UI 경로 => localhost:포트/demo-ui.html
+    tags-sorter: alpha            # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    operations-sorter: alpha      # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+  api-docs:
+    path: /api-docs/json
+    groups:
+      enabled: true
+  cache:
+    disabled: true
