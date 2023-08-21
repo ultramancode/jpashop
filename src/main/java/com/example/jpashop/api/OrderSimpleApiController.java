@@ -2,9 +2,9 @@ package com.example.jpashop.api;
 
 import com.example.jpashop.domain.Order;
 import com.example.jpashop.domain.OrderSearch;
-import com.example.jpashop.repository.OrderQueryRepository;
+import com.example.jpashop.repository.order.simpleQuery.OrderSimpleQueryRepository;
 import com.example.jpashop.repository.OrderRepository;
-import com.example.jpashop.repository.OrderSimpleQueryDto;
+import com.example.jpashop.repository.order.simpleQuery.OrderSimpleQueryDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderSimpleApiController {
 
   private final OrderRepository orderRepository;
-  private final OrderQueryRepository orderQueryRepository;
+  private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
 
   //v1. 하면 안된다는 것을 보여주는 예시 코드. 이렇게 엔티티 직접 외부노출 금지! dto 쓰기!
@@ -68,7 +68,7 @@ public class OrderSimpleApiController {
 
   @GetMapping("/api/v4/simple-orders")
   public List<OrderSimpleQueryDto> ordersV4(){
-    return orderQueryRepository.findOrderDtos();
+    return orderSimpleQueryRepository.findOrderDtos();
   }
 
 
