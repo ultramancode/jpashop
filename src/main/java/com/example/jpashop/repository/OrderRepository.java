@@ -109,12 +109,13 @@ public class OrderRepository {
             " join fetch o.delivery d", Order.class
     ).getResultList();
   }
+
   public List<Order> findAllWithMemberDelivery(int offset, int limit) {
     return em.createQuery(
-        "select o from Order o" +
-            " join fetch o.member m" +
-            " join fetch o.delivery d", Order.class
-    ).setFirstResult(offset)
+            "select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d", Order.class
+        ).setFirstResult(offset)
         .setMaxResults(limit)
         .getResultList();
   }
@@ -130,8 +131,6 @@ public class OrderRepository {
         .getResultList();
   }
 }
-
-
 
 /**
  * OrderQueryRepository로 이전! 논리적 계층 구조 분리 위해(지금은 이 메소드 때문에 레포가 화면에 의존하는 느낌)

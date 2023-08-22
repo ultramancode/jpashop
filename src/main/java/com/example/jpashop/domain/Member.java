@@ -47,6 +47,7 @@ public class Member {
   //@Builder는 생성자에 대해서만 작동하지. 초기화는 신경 안씀
 //  @Builder
   public static class Builder {
+
     private Long id;
 
     private String name;

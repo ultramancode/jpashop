@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter //학습을 위해 열어둔 Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Album extends Item{
+public class Album extends Item {
 
   public String artist;
   public String etc;

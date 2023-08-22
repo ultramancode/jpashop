@@ -81,8 +81,7 @@ public class Order {
   }
 
   /**
-   * 생성 메소드, 생성 복잡한 경우 .. 여기만 손 보면 해결 되도록
-   * ... 가변 인자는 제일 뒤에
+   * 생성 메소드, 생성 복잡한 경우 .. 여기만 손 보면 해결 되도록 ... 가변 인자는 제일 뒤에
    */
   public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
     Order order = new Order();

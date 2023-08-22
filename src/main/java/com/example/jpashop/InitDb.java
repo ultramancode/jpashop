@@ -81,6 +81,7 @@ public class InitDb {
       em.persist(order);
 
     }
+
     private Book createBook(String name, int price, int stockQuantity) {
       return Book.builder()
           .name(name)
@@ -88,6 +89,7 @@ public class InitDb {
           .stockQuantity(stockQuantity)
           .build();
     }
+
     private Member createMember(String name, String city, String street, String zipcode) {
       return new Member.Builder()
           .name(name)

@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 
 public class OpenApiConfig {
+
   @Bean
-  public OpenAPI openAPI(){
+  public OpenAPI openAPI() {
     Info info = new Info()
         .title("스웨거 테스트용")
         .version("v0.0.1")

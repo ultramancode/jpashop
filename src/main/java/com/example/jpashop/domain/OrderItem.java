@@ -41,8 +41,7 @@ public class OrderItem {
   private int count; // 주문 당시 수량
 
   /**
-   * 생성 메소드
-   * item에 있는 orderPrice 안쓰고 따로 받는 이유는 할인 등으로 값이 바뀔 수도 있으니 따로..
+   * 생성 메소드 item에 있는 orderPrice 안쓰고 따로 받는 이유는 할인 등으로 값이 바뀔 수도 있으니 따로..
    */
 
   public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
@@ -56,7 +55,7 @@ public class OrderItem {
 
   }
 
-//==비즈니스 로직==//
+  //==비즈니스 로직==//
   public void cancel() {
     getItem().addStock(count);
   }

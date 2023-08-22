@@ -18,7 +18,8 @@ public class OrderSimpleQueryRepository {
     //jpa는 엔티티나 밸류오브젝트(임베더블 같은..)만 반환 가능, dto에 바로 매핑 안됨, address는 값타입이라 가능
     //따라서 new 오퍼레이션 써줘야함 (지저분해진다는 단점 존재)
     return em.createQuery(
-            "select new com.example.jpashop.repository.order.simpleQuery.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status, d.address)" +
+            "select new com.example.jpashop.repository.order.simpleQuery.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status, d.address)"
+                +
                 " from Order o" +
                 " join o.member m" +
                 " join o.delivery d", OrderSimpleQueryDto.class)

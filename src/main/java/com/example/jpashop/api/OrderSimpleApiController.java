@@ -67,14 +67,9 @@ public class OrderSimpleApiController {
   //셀렉절 몇개로 성능영향은 적음 ..만약 20~30개 이상이고 이러면 고려해보고..
 
   @GetMapping("/api/v4/simple-orders")
-  public List<OrderSimpleQueryDto> ordersV4(){
+  public List<OrderSimpleQueryDto> ordersV4() {
     return orderSimpleQueryRepository.findOrderDtos();
   }
-
-
-
-
-
 
 
 }

@@ -24,13 +24,14 @@ public class OrderService {
 
   /**
    * 주문
+   *
    * @param memberId
    * @param itemId
    * @param count
    * @return orderId
    */
   @Transactional
-  public Long createOrder(Long memberId, Long itemId, int count){
+  public Long createOrder(Long memberId, Long itemId, int count) {
     //엔티티 조회
     Member member = memberService.findOne(memberId);
     Item item = itemService.findOne(itemId);
@@ -69,7 +70,7 @@ public class OrderService {
 
   //검색
 
-  public List<Order> searchOrder(OrderSearch orderSearch){
+  public List<Order> searchOrder(OrderSearch orderSearch) {
     return orderRepository.findAllByCriteria(orderSearch);
   }
 

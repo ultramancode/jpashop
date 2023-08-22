@@ -40,7 +40,7 @@ public class ItemController {
   }
 
   @GetMapping("/items")
-  public String list(Model model){
+  public String list(Model model) {
     //학습용이라 dto 안만들고 일단 엔티티 넘김 (추후 dto로)
     List<Item> items = itemService.findItems();
     model.addAttribute("items", items);

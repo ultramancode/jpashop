@@ -45,6 +45,7 @@ public abstract class Item {
   //도메인주도 설계.. 엔티티 자체가 해결할 수 있는 것은 엔티티 안에서 해결하는게 좋다!!
   //객체 지향적으로 데이터를 가지고 있는 곳에 비즈니스 메서드가 있는게 가장 좋음 => 응집력 up!!
   //필드값들 바깥에서 세터로 바꾸는 그런 짓 하지말고.. 이 안에서 핵심 비즈니스 로직으로 바꾸는 객체 지향적 설계해라
+
   /**
    * stock 증가
    */
@@ -62,13 +63,13 @@ public abstract class Item {
   /**
    * stock 감소
    */
-  public void removeStock(int quantity){
-   int restStock = this.stockQuantity - quantity;
-   if(restStock < 0 ){
-     throw new NotEnoughStockException("재고가 부족합니다");
-   }
+  public void removeStock(int quantity) {
+    int restStock = this.stockQuantity - quantity;
+    if (restStock < 0) {
+      throw new NotEnoughStockException("재고가 부족합니다");
+    }
 
-   this.stockQuantity = restStock;
+    this.stockQuantity = restStock;
   }
 
 }

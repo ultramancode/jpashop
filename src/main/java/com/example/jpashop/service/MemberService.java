@@ -24,7 +24,8 @@ public class MemberService {
     return member.getId();
 
   }
-//실무에서는 동시에 요청하는 경우 동시에 a라는 이름으로 가입하게될 수 있으니 최후의 방어막으로 name에다가 유니크 제약 조건 걸어줘야함!(멀티스레드 고려)
+
+  //실무에서는 동시에 요청하는 경우 동시에 a라는 이름으로 가입하게될 수 있으니 최후의 방어막으로 name에다가 유니크 제약 조건 걸어줘야함!(멀티스레드 고려)
   public void validateDuplicateMember(Member member) {
     List<Member> findMembers = memberRepository.findByName(member.getName());
     if (!findMembers.isEmpty()) {
